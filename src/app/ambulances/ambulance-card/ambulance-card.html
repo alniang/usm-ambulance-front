@@ -1,0 +1,52 @@
+<mat-card class="ambulance-card">
+  <div class="card-image">
+    <img [src]="ambulance.imageUrl" [alt]="ambulance.name" />
+    <div class="image-overlay">
+      <mat-chip class="type-chip">
+        <mat-icon>{{getTypeIcon(ambulance.type)}}</mat-icon>
+        {{getTypeLabel(ambulance.type)}}
+      </mat-chip>
+    </div>
+  </div>
+
+  <mat-card-content>
+    <div class="card-header">
+      <h2>{{ambulance.name}}</h2>
+      <mat-icon class="status-icon" [class.available]="ambulance.status === 'AVAILABLE'">
+        fiber_manual_record
+      </mat-icon>
+    </div>
+
+    <p class="description">{{ambulance.description}}</p>
+
+    <mat-divider></mat-divider>
+
+    <div class="card-info">
+      <div class="info-item">
+        <mat-icon>people</mat-icon>
+        <span>{{ambulance.capacity}} places</span>
+      </div>
+      <div class="info-item">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ambulance.year}}</span>
+      </div>
+      <div class="info-item">
+        <mat-icon>inventory_2</mat-icon>
+        <span>{{ambulance.equipment.length}} équipements</span>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="card-pricing">
+      <div class="price-info">
+        <span class="base-price">{{ambulance.basePrice}} €</span>
+        <span class="price-detail">+ {{ambulance.pricePerKm}} €/km</span>
+      </div>
+      <button mat-raised-button color="primary" class="details-btn" (click)="onViewDetails()">
+        Voir détails
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

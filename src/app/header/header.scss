@@ -1,0 +1,85 @@
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; // 🔝 reste au-dessus du contenu
+  background-color: var(--mat-toolbar-background, var(--usm-primary));
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+//   justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+// comment mettre l'ombre
+  box-shadow: 0px 5px rgba(167, 164, 164, 0.15);
+  .brand {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    mat-icon {
+      margin-right: 8px;
+    //   color: #f0501a;
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 16px; // <-- espace horizontal entre les boutons
+    flex: 1;
+    justify-content: center;
+
+    button {
+      color: white;
+      font-weight: 500;
+      text-transform: none;
+
+      mat-icon {
+        margin-right: 6px;
+      }
+
+      &.active,
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .menu-button {
+    color: white;
+  }
+}
+
+.mobile-menu {
+  background-color: #25b7ff;
+
+  a {
+    color: white;
+    font-weight: 500;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+}
+
+.sub-header {
+  background-color: #25b7ff;
+  text-align: center;
+  font-size: 1.3rem; 
+  color: white;
+  padding: 8px 24px;
+  text-align: center;
+}
+
+.sub-header h1 {
+    font-size: 3.5rem;
+}

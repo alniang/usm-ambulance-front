@@ -1,0 +1,312 @@
+.details-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  background-color: #f7f9fb; // gris clair
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.ambulance-details {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  max-width: 950px;
+  width: 100%;
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.ambulance-details {
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+
+      mat-icon {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  mat-dialog-content {
+    padding: 0;
+    max-height: 70vh;
+
+    .details-image {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-badge {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+
+        .status-chip {
+          background: rgba(255, 255, 255, 0.95);
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+
+          &.available {
+            background: rgba(76, 175, 80, 0.95);
+            color: white;
+          }
+
+          mat-icon {
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+          }
+        }
+      }
+    }
+
+    .details-content {
+      padding: 24px;
+
+      .main-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+
+        h1 {
+          margin: 0;
+          font-size: 1.8rem;
+          font-weight: 500;
+        }
+
+        .type-chip {
+          background: var(--primary-color);
+          color: white;
+          font-weight: 500;
+        }
+      }
+
+      .description {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      mat-divider {
+        margin: 24px 0;
+      }
+
+      .info-section {
+        margin-bottom: 8px;
+
+        h3 {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 1.2rem;
+          font-weight: 500;
+          margin-bottom: 16px;
+          color: var(--text-primary);
+
+          mat-icon {
+            color: var(--primary-color);
+            font-size: 22px;
+            width: 22px;
+            height: 22px;
+          }
+        }
+
+        .info-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 16px;
+
+          .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: #f5f5f5;
+            border-radius: 8px;
+
+            mat-icon {
+              color: var(--primary-color);
+              margin-top: 2px;
+            }
+
+            div {
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+
+              .label {
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+              }
+
+              .value {
+                font-weight: 500;
+                color: var(--text-primary);
+              }
+            }
+          }
+        }
+
+        .equipment-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+
+          mat-chip {
+            background: #e3f2fd;
+            color: #1976d2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            mat-icon {
+              font-size: 16px;
+              width: 16px;
+              height: 16px;
+            }
+          }
+        }
+
+        .features-list {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 12px;
+
+          .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            mat-icon {
+              color: #4caf50;
+              font-size: 20px;
+              width: 20px;
+              height: 20px;
+            }
+
+            span {
+              color: var(--text-primary);
+            }
+          }
+        }
+
+        &.pricing-section {
+          .pricing-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+
+            .price-card {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+              padding: 16px;
+              background: linear-gradient(135deg, var(--primary-color), #1976d2);
+              color: white;
+              border-radius: 8px;
+
+              .price-label {
+                font-size: 0.9rem;
+                opacity: 0.9;
+              }
+
+              .price-value {
+                font-size: 1.8rem;
+                font-weight: 600;
+              }
+            }
+          }
+
+          .pricing-note {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: #fff3e0;
+            border-radius: 8px;
+            color: #e65100;
+            margin: 0;
+
+            mat-icon {
+              font-size: 20px;
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  mat-dialog-actions {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ambulance-details {
+    mat-dialog-content {
+      .details-image {
+        height: 200px;
+      }
+
+      .details-content {
+        .main-info {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+    }
+
+    mat-dialog-actions {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

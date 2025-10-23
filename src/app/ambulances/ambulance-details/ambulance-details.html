@@ -1,0 +1,144 @@
+<div class="details-wrapper">
+
+
+<div class="ambulance-details">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>
+      <mat-icon>info</mat-icon>
+      Détails de l'ambulance
+    </h2>
+    <!-- <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button> -->
+  </div>
+
+  <mat-dialog-content>
+    <div class="details-image">
+      <img [src]="ambulance()?.imageUrl" [alt]="ambulance()?.name" />
+      <div class="image-badge">
+        <mat-chip class="status-chip available">
+          <mat-icon>check_circle</mat-icon>
+          Disponible
+        </mat-chip>
+      </div>
+    </div>
+
+    <div class="details-content">
+      <div class="main-info">
+        <h1>{{ambulance()?.name}}</h1>
+        <mat-chip class="type-chip">{{getTypeLabel(ambulance()?.type!)}}</mat-chip>
+      </div>
+
+      <p class="description">{{ambulance()?.description}}</p>
+
+      <mat-divider></mat-divider>
+
+      <!-- Informations générales -->
+      <section class="info-section">
+        <h3>
+          <mat-icon>info_outline</mat-icon>
+          Informations générales
+        </h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <mat-icon>badge</mat-icon>
+            <div>
+              <span class="label">Immatriculation</span>
+              <span class="value">{{ambulance()?.licensePlate}}</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <mat-icon>calendar_today</mat-icon>
+            <div>
+              <span class="label">Année</span>
+              <span class="value">{{ambulance()?.year}}</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <mat-icon>people</mat-icon>
+            <div>
+              <span class="label">Capacité</span>
+              <span class="value">{{ambulance()?.capacity}} personnes</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <mat-icon>category</mat-icon>
+            <div>
+              <span class="label">Type</span>
+              <span class="value">{{getTypeLabel(ambulance()?.type!)}}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <!-- Équipements -->
+      <section class="info-section">
+        <h3>
+          <mat-icon>medical_services</mat-icon>
+          Équipements médicaux
+        </h3>
+        <div class="equipment-list">
+          @for (item of ambulance()?.equipment; track $index) {
+            <mat-chip >
+              <mat-icon>done</mat-icon>
+              {{item}}
+            </mat-chip>
+          }
+        </div>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <!-- Caractéristiques -->
+      <section class="info-section">
+        <h3>
+          <mat-icon>settings</mat-icon>
+          Caractéristiques
+        </h3>
+        <div class="features-list">
+          @for (feature of ambulance()?.features; track $index) {
+              <div class="feature-item" >
+                <mat-icon>check_circle</mat-icon>
+                <span>{{feature}}</span>
+              </div>
+          }
+        </div>
+      </section>
+
+      <mat-divider></mat-divider>
+
+      <!-- Tarification -->
+      <section class="info-section pricing-section">
+        <h3>
+          <mat-icon>payments</mat-icon>
+          Tarification
+        </h3>
+        <div class="pricing-info">
+          <div class="price-card">
+            <span class="price-label">Tarif de base</span>
+            <span class="price-value">{{ambulance()?.basePrice}} €</span>
+          </div>
+          <div class="price-card">
+            <span class="price-label">Prix par kilomètre</span>
+            <span class="price-value">{{ambulance()?.pricePerKm}} €</span>
+          </div>
+        </div>
+        <p class="pricing-note">
+          <mat-icon>info</mat-icon>
+          Le tarif final sera calculé en fonction de la distance du trajet
+        </p>
+      </section>
+    </div>
+  </mat-dialog-content>
+
+  <!-- <mat-dialog-actions>
+    <button mat-button (click)="close()">Fermer</button>
+    <button mat-raised-button color="primary" (click)="openBookingForm()">
+      <mat-icon>event</mat-icon>
+      Réserver cette ambulance
+    </button>
+  </mat-dialog-actions> -->
+</div>
+</div>

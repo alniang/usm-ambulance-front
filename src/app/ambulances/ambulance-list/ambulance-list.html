@@ -1,0 +1,71 @@
+<div class="ambulance-list-container">
+  <header class="page-header gradient-bg-primary">
+    <div class="container">
+      <h1>
+        <mat-icon>local_hospital</mat-icon>
+        Nos Ambulances Disponibles
+      </h1>
+      <p class="subtitle">Choisissez l'ambulance adaptée à vos besoins</p>
+    </div>
+  </header>
+
+  <div class="container">
+     <!-- Filtres -->
+    <!-- <div class="filters">
+      <h3>Filtrer par type</h3>
+      <div class="filter-chips">
+        <mat-chip-listbox [(ngModel)]="selectedType" (change)="filterByType(selectedType)">
+          <mat-chip-option 
+            *ngFor="let type of ambulanceTypes" 
+            [value]="type.value"
+            [selected]="selectedType === type.value">
+            <mat-icon>{{type.icon}}</mat-icon>
+            {{type.label}}
+          </mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+    </div> -->
+
+
+    <!-- Loading -->
+     <!-- @if (loading) {
+      <div class="loading-container">
+        <mat-spinner></mat-spinner>
+        <p>Chargement des ambulances...</p>
+      </div>
+    } -->
+    <!-- Liste des ambulances -->
+
+    <div class="ambulances-grid">
+        @for (ambulance of ambulanceList(); track $index) {
+          <app-ambulance-card 
+         [ambulance]="ambulance"
+         >
+        </app-ambulance-card>
+        }
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

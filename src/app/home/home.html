@@ -1,0 +1,98 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero gradient-bg-primary">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1 class="hero-title">
+        Transport Médical d'Excellence
+      </h1>
+      <p class="hero-subtitle">
+        Réservez votre ambulance en quelques clics - Service disponible 24h/24 et 7j/7
+      </p>
+      <div class="hero-buttons">
+        <button mat-raised-button 
+                class="btn-large btn-white" 
+                (click)="navigateToAmbulances()">
+          <mat-icon>local_shipping</mat-icon>
+          Voir les Ambulances
+        </button>
+        <button mat-raised-button 
+                class="btn-large btn-outline-white" 
+                (click)="callEmergency()">
+          <mat-icon>call</mat-icon>
+          Urgence - Appel Direct
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Pourquoi choisir USM Ambulances ?</h2>
+        <p class="section-subtitle">
+          Service professionnel de transport médical avec une flotte moderne et équipée
+        </p>
+      </div>
+
+      <div class="features-grid">
+        @for (feature of features; track $index) {
+          <mat-card class="feature-card">
+            <div class="feature-icon gradient-bg-primary">
+              <mat-icon>{{feature.icon}}</mat-icon>
+            </div>
+            <mat-card-content>
+              <h3>{{feature.title}}</h3>
+              <p>{{feature.description}}</p>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats-section gradient-bg-primary">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Années d'expérience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15</div>
+          <div class="stat-label">Ambulances disponibles</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5000+</div>
+          <div class="stat-label">Patients transportés</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Service continu</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Besoin d'une ambulance maintenant ?</h2>
+        <p>Notre équipe est prête à intervenir immédiatement pour vous assister</p>
+        <div class="cta-buttons">
+          <button mat-raised-button color="primary" class="btn-large" (click)="navigateToAmbulances()">
+            <mat-icon>event</mat-icon>
+            Réserver une ambulance
+          </button>
+          <button mat-raised-button color="accent" class="btn-large" (click)="callEmergency()">
+            <mat-icon>phone</mat-icon>
+            Appeler maintenant
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

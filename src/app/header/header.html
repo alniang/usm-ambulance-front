@@ -1,0 +1,68 @@
+ <mat-toolbar color="primary" class="toolbar">
+  <!-- Logo / Nom -->
+  <div class="brand" routerLink="/">
+    <mat-icon>local_hospital</mat-icon>
+    <span class="title">USM Ambulances</span>
+  </div>
+
+  <!-- Liens de navigation (desktop) -->
+  @if (!isMobile) {
+    <div class="nav-links">
+      <button mat-button routerLink="/accueil" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon fontIcon="home"></mat-icon>
+        <span>Accueil</span>
+      </button>
+      <button mat-button routerLink="/ambulances" routerLinkActive="active">
+        <mat-icon fontIcon="local_shipping"></mat-icon>
+        <span>Ambulances</span>
+      </button>
+      <button mat-button routerLink="/services" routerLinkActive="active">
+        <mat-icon fontIcon="medical_services"></mat-icon>
+        <span>Services</span>
+      </button>
+      <button mat-button routerLink="/contact" routerLinkActive="active">
+        <mat-icon fontIcon="contact_support"></mat-icon>
+        <span>Contact</span>
+      </button>
+    </div>
+  }
+
+  <!-- Menu hamburger (mobile) -->
+  @if (isMobile) {
+    <button mat-icon-button (click)="toggleMenu()" class="menu-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+  }
+</mat-toolbar>
+ <!-- <hr> -->
+ <!-- <div class="sub-header">
+    <h1>Transport Médical d'Excellence</h1>
+    <p>Réservez votre ambulance en quelques clics — Service disponible 24h/24 et 7j/7</p>
+    <button mat-button routerLink="/ambulances" routerLinkActive="active">
+        <mat-icon fontIcon="local_shipping"></mat-icon>
+        <span>Voir les Ambulances</span>
+    </button>
+    <button mat-button routerLink="/ambulances" routerLinkActive="active">
+        <mat-icon fontIcon="call"></mat-icon>
+        <span>Urgence - Appel Direct</span>
+    </button>
+ </div> -->
+
+<!-- <mat-toolbar color="primary" class="toolbar sub-header">
+  <div class="sub-header">
+    <h1>Transport Médical d'Excellence</h1>
+    <p>Réservez votre ambulance en quelques clics — Service disponible 24h/24 et 7j/7</p>
+  </div>
+</mat-toolbar> -->
+
+<!-- Menu déroulant mobile -->
+@if (isMobile && menuOpen) {
+  <mat-nav-list class="mobile-menu">
+    <a mat-list-item routerLink="/accueil" (click)="closeMenu()">Accueil</a>
+    <a mat-list-item routerLink="/ambulances" (click)="closeMenu()">Ambulances</a>
+    <a mat-list-item routerLink="/services" (click)="closeMenu()">Services</a>
+    <a mat-list-item routerLink="/contact" (click)="closeMenu()">Contact</a>
+  </mat-nav-list>
+}
+
+
