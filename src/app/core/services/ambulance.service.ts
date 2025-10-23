@@ -8,7 +8,7 @@ import { Ambulance } from '../models/ambulance.model';
 })
 export class AmbulanceService {
   private apiUrl = 'http://localhost:5000/api/ambulances';
-  private apiUrlProduction = "https://usm-ambulance-back-1.onrender.com"
+  private apiUrlProduction = "https://usm-ambulance-back-1.onrender.com/api/ambulances";
 
   // constructor(private http: HttpClient) {}
   readonly http = inject(HttpClient);
