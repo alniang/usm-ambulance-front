@@ -7,28 +7,29 @@ import { Ambulance } from '../models/ambulance.model';
   providedIn: 'root'
 })
 export class AmbulanceService {
-  private apiUrl = 'http://localhost:5000/api/ambulances'
+  private apiUrl = 'http://localhost:5000/api/ambulances';
+  private apiUrlProduction = "https://usm-ambulance-back-1.onrender.com"
 
   // constructor(private http: HttpClient) {}
   readonly http = inject(HttpClient);
   
   getAll(): Observable<Ambulance[]> {
-    return this.http.get<Ambulance[]>(this.apiUrl);
+    return this.http.get<Ambulance[]>(this.apiUrlProduction);
   }
 
   getById(id: string): Observable<Ambulance> {
-    return this.http.get<Ambulance>(`${this.apiUrl}/${id}`);
+    return this.http.get<Ambulance>(`${this.apiUrlProduction}/${id}`);
   }
 
   create(ambulance: Ambulance): Observable<Ambulance> {
-    return this.http.post<Ambulance>(this.apiUrl, ambulance);
+    return this.http.post<Ambulance>(this.apiUrlProduction, ambulance);
   }
 
   update(id: string, ambulance: Ambulance): Observable<Ambulance> {
-    return this.http.put<Ambulance>(`${this.apiUrl}/${id}`, ambulance);
+    return this.http.put<Ambulance>(`${this.apiUrlProduction}/${id}`, ambulance);
   }
 
   delete(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrlProduction}/${id}`);
   }
 }
