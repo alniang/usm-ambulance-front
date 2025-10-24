@@ -4,11 +4,15 @@
   left: 0;
   width: 100%;
   z-index: 1000; // 🔝 reste au-dessus du contenu
+  background-color: var(--mat-toolbar-background, var(--usm-primary));
+  color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
+//   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-
+// comment mettre l'ombre
+  box-shadow: 0px 5px rgba(167, 164, 164, 0.15);
   .brand {
     display: flex;
     align-items: center;
@@ -50,23 +54,36 @@
   }
 
   .menu-button {
-    display: none;
+    color: white;
+  }
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.mobile-menu {
+  background-color: #25b7ff;
+
+  a {
+    color: white;
+    font-weight: 500;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
   }
 }
 
-@media (max-width: 768px) {
-  .toolbar {
-    justify-content: space-between;
-    
-    .nav-links {
-      display: none; // Cacher les liens de navigation sur mobile
-    }
-    .menu-button {
-      display: block;
-      color: white;
-    }
-  } 
-    
+.sub-header {
+  background-color: #25b7ff;
+  text-align: center;
+  font-size: 1.3rem; 
+  color: white;
+  padding: 8px 24px;
+  text-align: center;
+}
+
+.sub-header h1 {
+    font-size: 3.5rem;
 }
 
 .example-container {
@@ -84,12 +101,11 @@
 .example-sidenav {
   width: 100%;
   height: fit-content;
-  background: #25b7ff;
-  color: white;
+  background: #f0f0f0;
 }
 
 .mat-drawer.mat-drawer-opened.mat-drawer-opened {
-  transform: none;
-  position: fixed;
-  top: 64px;
+    transform: none;
+    position: fixed;
+    top: 64px;
 }

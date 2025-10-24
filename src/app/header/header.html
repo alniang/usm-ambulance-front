@@ -6,7 +6,6 @@
   </div>
 
   <!-- Liens de navigation (desktop) -->
-  @if (!isMobile) {
     <div class="nav-links">
       <button mat-button routerLink="/accueil" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <mat-icon fontIcon="home"></mat-icon>
@@ -25,44 +24,21 @@
         <span>Contact</span>
       </button>
     </div>
-  }
 
   <!-- Menu hamburger (mobile) -->
-  @if (isMobile) {
-    <button mat-icon-button (click)="toggleMenu()" class="menu-button">
+    <button mat-icon-button (click)="drawer.toggle()" class="menu-button">
       <mat-icon>menu</mat-icon>
     </button>
-  }
+    
 </mat-toolbar>
- <!-- <hr> -->
- <!-- <div class="sub-header">
-    <h1>Transport Médical d'Excellence</h1>
-    <p>Réservez votre ambulance en quelques clics — Service disponible 24h/24 et 7j/7</p>
-    <button mat-button routerLink="/ambulances" routerLinkActive="active">
-        <mat-icon fontIcon="local_shipping"></mat-icon>
-        <span>Voir les Ambulances</span>
-    </button>
-    <button mat-button routerLink="/ambulances" routerLinkActive="active">
-        <mat-icon fontIcon="call"></mat-icon>
-        <span>Urgence - Appel Direct</span>
-    </button>
- </div> -->
 
-<!-- <mat-toolbar color="primary" class="toolbar sub-header">
-  <div class="sub-header">
-    <h1>Transport Médical d'Excellence</h1>
-    <p>Réservez votre ambulance en quelques clics — Service disponible 24h/24 et 7j/7</p>
-  </div>
-</mat-toolbar> -->
-
-<!-- Menu déroulant mobile -->
-@if (isMobile && menuOpen) {
-  <mat-nav-list class="mobile-menu">
-    <a mat-list-item routerLink="/accueil" (click)="closeMenu()">Accueil</a>
-    <a mat-list-item routerLink="/ambulances" (click)="closeMenu()">Ambulances</a>
-    <a mat-list-item routerLink="/services" (click)="closeMenu()">Services</a>
-    <a mat-list-item routerLink="/contact" (click)="closeMenu()">Contact</a>
-  </mat-nav-list>
-}
-
-
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/accueil" (click)="drawer.close()"><b>Accueil</b></a>
+      <a mat-list-item routerLink="/ambulances" (click)="drawer.close()"><b>Ambulances</b></a>
+      <a mat-list-item routerLink="/services" (click)="drawer.close()"><b>Services</b></a>
+      <a mat-list-item routerLink="/contact" (click)="drawer.close()"><b>Contact</b></a>
+    </mat-nav-list>
+  </mat-drawer>
+</mat-drawer-container>
