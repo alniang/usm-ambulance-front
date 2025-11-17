@@ -1,0 +1,33 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="title-text">
+      USM Ambulances
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header class="page-header gradient-bg-primary">
+    <div class="container">
+      <h1>
+        <ion-icon name="medkit-sharp"></ion-icon>
+        Nos Ambulances Disponibles
+      </h1>
+      <p class="subtitle">Choisissez l'ambulance adaptée à vos besoins</p>
+    </div>
+  </ion-header>
+    <div class="ambulances-grid container">
+      <ion-grid>
+        <ion-row>
+        @for (ambulance of ambulanceList(); track $index) {
+          <ion-col size-md="4">
+            <app-ambulance-card 
+            [ambulance]="ambulance"
+            >
+            </app-ambulance-card>
+          </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+    </div>
+</ion-content>

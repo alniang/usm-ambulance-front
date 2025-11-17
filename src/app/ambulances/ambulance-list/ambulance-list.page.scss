@@ -1,0 +1,45 @@
+.page-header {
+  color: white;
+  padding: 48px 0;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+//   margin-top: -108px;
+  h1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    font-size: 2.5rem;
+    margin: 0 0 8px 0;
+    font-weight: 500;
+
+    ion-icon {
+      font-size: 2.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin: 0;
+  }
+}
+
+.title-text {
+  color: white;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+ion-toolbar {
+  --background: #25B7FF;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}

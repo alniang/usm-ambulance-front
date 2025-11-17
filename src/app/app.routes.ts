@@ -1,15 +1,34 @@
 import { Routes } from '@angular/router';
-import { AmbulanceList } from './ambulances/ambulance-list/ambulance-list';
-import { Home } from './home/home';
-import { AmbulanceDetails } from './ambulances/ambulance-details/ambulance-details';
+import { TabsPage } from './tabs/tabs.page';
 
-// Plus une route est spécifique on la met en haut
-// Plus une route est générale on la met en bas
 export const routes: Routes = [
-    // Routes will be added here
-    { path: 'ambulances', component: AmbulanceList, title: 'Ambulances'},
-    { path: 'ambulances/:id', component: AmbulanceDetails, title: 'Ambulances'},
-    { path: 'accueil', component: Home, title: 'Accueil'},
-    { path: '', redirectTo: 'accueil', pathMatch: 'full' },
-    { path: '**', redirectTo: 'accueil' } // Tout le temps le positionner en dernier car le router d'angular fonctionne du haut vers le bas!!
+  // { path: 'tabs', component: TabsPage, children: [
+
+  
+  {
+    path: 'ambulances/:id',
+    loadComponent: () => import('./ambulances/ambulance-details/ambulance-details.page').then( m => m.AmbulanceDetailsPage)
+  },
+
+  {
+    path: 'home', loadComponent: () => import('./home/home.page').then( m => m.HomePage)
+  },
+  { path: 'ambulances', loadComponent: () => import('./ambulances/ambulance-list/ambulance-list.page').then( m => m.AmbulanceListPage) },
+  {
+    path: 'ambulances/:id',
+    loadComponent: () => import('./ambulances/ambulance-details/ambulance-details.page').then( m => m.AmbulanceDetailsPage)
+  },
+
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '**', redirectTo: 'home'} // Tout le temps le positionner en dernier car le router d'angular fonctionne du haut vers le bas!!
+
+  // ]
+// },
+,
+{
+  path: '',
+  redirectTo: '/home',
+  pathMatch: 'full',
+},
+
 ];

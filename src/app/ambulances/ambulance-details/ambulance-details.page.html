@@ -1,0 +1,147 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title class="title-text">
+      USM Ambulances
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="details-wrapper">
+  <div class="container ambulance-details">
+
+    <!-- HEADER -->
+    <div class="dialog-header">
+      <h2>
+        <ion-icon name="information-circle-sharp"></ion-icon>
+        Détails de l'ambulance
+      </h2>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="details-image">
+      <img [src]="ambulance()?.imageUrl" [alt]="ambulance()?.name" />
+      <div class="image-badge">
+        <ion-chip 
+          [class.available]="ambulance()?.status === 'AVAILABLE'"
+          [class.unavailable]="ambulance()?.status !== 'AVAILABLE'" >
+          <ion-icon [name]="ambulance()?.status === 'AVAILABLE' ? 'checkmark-circle-outline' : 'close-circle-outline'"></ion-icon>
+          {{ ambulance()?.status === 'AVAILABLE' ? 'Disponible' : 'Indisponible' }}
+        </ion-chip>
+      </div>
+    </div>
+
+    <!-- MAIN INFO -->
+    <div class="details-content">
+      <div class="main-info">
+        <h1>{{ ambulance()?.name }}</h1>
+        <ion-chip color="primary">
+          {{ getTypeLabel(ambulance()?.type!) }}
+        </ion-chip>
+      </div>
+
+      <p class="description">{{ ambulance()?.description }}</p>
+
+      <ion-item-divider></ion-item-divider>
+
+      <!-- INFORMATIONS GÉNÉRALES -->
+      <section class="info-section">
+        <h3>
+          <ion-icon name="information-circle-outline"></ion-icon>
+          Informations générales
+        </h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <ion-icon name="car-outline"></ion-icon>
+            <div>
+              <span class="label">Immatriculation </span>
+              <span class="value">{{ ambulance()?.licensePlate }}</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <ion-icon name="calendar-outline"></ion-icon>
+            <div>
+              <span class="label">Année </span>
+              <span class="value">{{ ambulance()?.year }}</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <ion-icon name="people-outline"></ion-icon>
+            <div>
+              <span class="label">Capacité </span>
+              <span class="value">{{ ambulance()?.capacity }} personnes</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <ion-icon name="medkit-outline"></ion-icon>
+            <div>
+              <span class="label">Type </span>
+              <span class="value">{{ getTypeLabel(ambulance()?.type!) }}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ion-item-divider></ion-item-divider>
+
+      <!-- ÉQUIPEMENTS -->
+      <section class="info-section">
+        <h3>
+          <ion-icon name="medical-outline"></ion-icon>
+          Équipements médicaux
+        </h3>
+        <div class="equipment-list">
+          @for (equipement of ambulance()?.equipment; track $index) {
+            <ion-chip>
+              <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+              {{ equipement }}
+            </ion-chip> 
+          }
+        </div>
+      </section>
+
+      <ion-item-divider></ion-item-divider>
+
+      <!-- CARACTÉRISTIQUES -->
+      <section class="info-section">
+        <h3>
+          <ion-icon name="settings-outline"></ion-icon>
+          Caractéristiques
+        </h3>
+        <div class="features-list">
+          @for (feature of ambulance()?.features; track $index) {
+            <div class="feature-item">
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+              <span>{{ feature }}</span>
+            </div>
+          }
+        </div>
+      </section>
+
+      <ion-item-divider></ion-item-divider>
+
+      <!-- TARIFICATION -->
+      <section class="info-section pricing-section">
+        <h3>
+          <ion-icon name="cash-outline"></ion-icon>
+          Tarification
+        </h3>
+        <div class="pricing-info">
+          <div class="price-card">
+            <span class="price-label">Tarif de base </span>
+            <span class="price-value">{{ ambulance()?.basePrice }} €</span>
+          </div>
+          <div class="price-card">
+            <span class="price-label">Prix par kilomètre </span>
+            <span class="price-value">{{ ambulance()?.pricePerKm }} €</span>
+          </div>
+        </div>
+        <p class="pricing-note">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          Le tarif final sera calculé en fonction de la distance du trajet.
+        </p>
+      </section>
+    </div>
+  </div>
+</ion-content>
+
+ 

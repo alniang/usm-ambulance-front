@@ -1,0 +1,7 @@
+{
+  "name": "usm-ambulance",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

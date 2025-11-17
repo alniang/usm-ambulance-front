@@ -4,10 +4,9 @@ import { Observable } from 'rxjs';
 import { Ambulance } from '../models/ambulance.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AmbulanceService {
-  private apiUrl = 'http://localhost:5000/api/ambulances';
   private apiUrlProduction = "https://usm-ambulance-back-1.onrender.com/api/ambulances";
 
   // constructor(private http: HttpClient) {}
