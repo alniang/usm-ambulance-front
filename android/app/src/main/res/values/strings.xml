@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">usm-ambulance</string>
+    <string name="title_activity_main">usm-ambulance</string>
+    <string name="package_name">com.usm.ambulances</string>
+    <string name="custom_url_scheme">com.usm.ambulances</string>
+</resources>
