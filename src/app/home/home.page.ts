@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { IonHeader, IonMenuButton, IonButtons, IonToolbar, IonTitle, IonCard, IonButton, IonIcon, IonContent, IonMenu, IonCardContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-import { add, addCircle, carOutline, cashOutline, checkmarkDoneCircle, checkmarkOutline, heartSharp, logoIonic, shapes, timeOutline, timerOutline, calendarOutline, callSharp } from 'ionicons/icons';
+import { IonCard, IonButton, IonIcon, IonContent, IonCardContent, IonTitle, IonToolbar, IonHeader, IonButtons } from '@ionic/angular/standalone';
+
+import { add, carOutline, cashOutline, checkmarkOutline, heartSharp, timeOutline, timerOutline, calendarOutline, callSharp } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 interface Feature {
   icon: string;
@@ -15,17 +16,39 @@ interface Feature {
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonButtons, IonMenuButton, IonToolbar, IonTitle, IonContent, IonCard, IonIcon, IonButton,IonCardContent, IonMenu, ExploreContainerComponent],
+  imports: [
+    RouterModule, 
+    RouterLink, 
+    FooterComponent, 
+    IonButtons, 
+    IonContent, 
+    IonCard, 
+    IonIcon, 
+    IonButton,
+    IonCardContent, 
+    IonTitle, 
+    IonToolbar, 
+    IonHeader
+  ],
 })
 export class HomePage {
-readonly router = inject(Router);
+  readonly router = inject(Router);
 
-callEmergency() {
-throw new Error('Method not implemented.');
-}
-navigateToAmbulances() {
-this.router.navigate(['/ambulances']);
-}
+  callEmergencyWhatsapp() {
+    const phone = '221766365050'; 
+    const message = encodeURIComponent("Bonjour, je souhaite avoir plus d'informations !");
+    const url = `https://wa.me/${phone}?text=${message}`;
+
+    window.open(url, "_blank");
+  }
+
+  callEmergency() {
+    window.location.href = 'tel:+221766365050';
+  }
+
+  navigateToAmbulances() {
+    this.router.navigate(['/ambulances']);
+  }
 
   features: Feature[] = [
     {

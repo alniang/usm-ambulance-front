@@ -1,10 +1,27 @@
-<ion-header [translucent]="false">
-  <ion-toolbar>
-    <ion-title class="title-text">
-      USM Ambulances
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-hide-sm-down">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>USM Ambulances</ion-title>
+
+        <ion-buttons slot="end">
+          <ion-button routerLink="/home">Accueil</ion-button>
+          <ion-button routerLink="/ambulances">Ambulances</ion-button>
+          <ion-button routerLink="/contact">Contact</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+</div>
+
+
+<div class="ion-hide-md-up">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="title-text">
+          Urgence & Solutions Médicales
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+</div>
 
 <ion-content [fullscreen]="true">
   <ion-header class="page-header gradient-bg-primary">
@@ -31,3 +48,12 @@
     </ion-grid>
     </div>
 </ion-content>
+
+<app-footer></app-footer>
+<!-- <div class="ion-hide-sm-down">
+</div> -->
+
+<!-- TABS MOBILE -->
+  <!-- <div class="ion-hide-md-up">
+    <app-tabs></app-tabs>
+  </div> -->

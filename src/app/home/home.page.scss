@@ -11,6 +11,10 @@ ion-toolbar {
   --background: #25B7FF;
 }
 
+ion-icon {
+  margin-right: 6px;
+}
+
 /* =========================
    HERO SECTION
 ========================= */
@@ -76,6 +80,7 @@ ion-toolbar {
 
   ion-icon {
     font-size: 24px;
+    margin-right: 6px;
   }
 
   &:hover {
@@ -258,6 +263,7 @@ ion-toolbar {
 
       ion-icon {
         font-size: 24px;
+        margin-right: 6px;
       }
 
       &:hover {
@@ -267,3 +273,4 @@ ion-toolbar {
     }
   }
 }
+

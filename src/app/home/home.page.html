@@ -1,12 +1,38 @@
-<ion-header [translucent]="false">
-  <ion-toolbar>
-    <ion-title class="title-text">
-      USM Ambulances
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="ion-hide-sm-down">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>USM Ambulances</ion-title>
 
-<ion-content [fullscreen]="true">
+        <ion-buttons slot="end">
+          <ion-button routerLink="/home">
+            <ion-icon name="home-outline"></ion-icon>
+              Accueil
+          </ion-button>
+          <ion-button routerLink="/ambulances">
+            <ion-icon name="car-outline"></ion-icon>
+              Ambulances
+          </ion-button>
+          <ion-button routerLink="/contact">
+            <ion-icon name="help-circle-outline"></ion-icon>
+              Contact
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+  </div>
+
+<div class="ion-hide-md-up">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="title-text">
+          Urgence & Solutions Médicales
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+</div>
+
+
+<ion-content fullscreen="true">
   <!-- Hero Section -->
   <section class="hero gradient-bg-primary">
     <div></div>
@@ -24,7 +50,7 @@
         </ion-button>
         <ion-button shape="round" fill="clear" color="medium"  
                 class="btn-large btn-outline-white" 
-                (click)="callEmergency()">
+                (click)="callEmergencyWhatsapp()">
           <ion-icon name="call-sharp"></ion-icon>
           Urgence - Appel Direct
         </ion-button>
@@ -46,29 +72,13 @@
         @for (feature of features; track $index) {
           <ion-card class="feature-card">
             <div class="feature-icon gradient-bg-primary">
-              <!-- <ion-icon name="logo-ionic"></ion-icon> -->
               <ion-icon [name]="feature.icon"></ion-icon>
-              <!-- <ion-icon name="heart-sharp"></ion-icon>
-              <ion-icon name="time-outline"></ion-icon>
-              <ion-icon name="checkmark-outline"></ion-icon>
-              <ion-icon name="car-outline"></ion-icon>
-              <ion-icon name="timer-outline"></ion-icon>
-              <ion-icon name="cash-outline"></ion-icon> -->
             </div>
             <ion-card-content>
               <h3>{{feature.title}}</h3>
               <p>{{feature.description}}</p>
             </ion-card-content>
           </ion-card>
-          <!-- <mat-card class="feature-card">
-            <div class="feature-icon gradient-bg-primary">
-              <mat-icon>{{feature.icon}}</mat-icon>
-            </div>
-            <mat-card-content>
-              <h3>{{feature.title}}</h3>
-              <p>{{feature.description}}</p>
-            </mat-card-content>
-          </mat-card> -->
         }
       </div>
     </div>
@@ -106,7 +116,6 @@
         <p>Notre équipe est prête à intervenir immédiatement pour vous assister</p>
         <div class="cta-buttons">
           <ion-button shape="round" color="medium" fill="outline" class="cta-btn-large" (click)="navigateToAmbulances()">
-          <!-- <button mat-raised-button color="primary" class="btn-large" (click)="navigateToAmbulances()"> -->
           <ion-icon name="calendar-outline"></ion-icon>            
           Réserver une ambulance
           </ion-button>
@@ -120,3 +129,5 @@
     </div>
   </section>
 </ion-content>
+
+<app-footer></app-footer>

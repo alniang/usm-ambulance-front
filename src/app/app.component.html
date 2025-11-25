@@ -1,60 +1,42 @@
-<!-- 
-
-
 <ion-app>
-  MENU LATERAL
-  <ion-menu contentId="main-content">
+  <!-- NAVIGATION DESKTOP -->
+  <!-- <div class="ion-hide-sm-down">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>USM Ambulances</ion-title>
+
+        <ion-buttons slot="end">
+          <ion-button routerLink="/home">Accueil</ion-button>
+          <ion-button routerLink="/ambulances">Ambulances</ion-button>
+          <ion-button routerLink="/contact">Contact</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+  </div> -->
+
+  <!-- HEADER MOBILE -->
+  <!-- <div class="ion-hide-md-up">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-title class="title-text">
+          Urgence & Solutions Médicales
+        </ion-title>
       </ion-toolbar>
     </ion-header>
+  </div> -->
 
-    <ion-content>
-      <ion-list>
-        <ion-menu-toggle auto-hide="true">
-          <ion-item routerLink="/accueil" routerDirection="root" lines="none">
-            <ion-icon name="home-outline" slot="start"></ion-icon>
-            <ion-label>Accueil</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
+  <!-- CONTENU DES PAGES -->
+  <ion-content >
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
 
-        <ion-menu-toggle auto-hide="true">
-          <ion-item routerLink="/ambulances" routerDirection="root" lines="none">
-            <ion-icon name="car-outline" slot="start"></ion-icon>
-            <ion-label>Ambulances</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
+  <!-- FOOTER DESKTOP -->
+  <!-- <div class="ion-hide-sm-down">
+    <app-footer></app-footer>
+  </div> -->
 
-        <ion-menu-toggle auto-hide="true">
-          <ion-item routerLink="/contact" routerDirection="root" lines="none">
-            <ion-icon name="help-circle-outline" slot="start"></ion-icon>
-            <ion-label>Contact</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-
-  CONTENU PRINCIPAL
-  <div class="ion-page" id="main-content">
-    <ion-header translucent="true">
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Accueil</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content>
-      <ion-router-outlet></ion-router-outlet>
-    </ion-content>
-  </div>
-</ion-app> -->
-
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-  <app-tabs></app-tabs>
+  <!-- TABS MOBILE -->
+  <!-- <div class="">
+    <app-tabs></app-tabs>
+  </div> -->
 </ion-app>

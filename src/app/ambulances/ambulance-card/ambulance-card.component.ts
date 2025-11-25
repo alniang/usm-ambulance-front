@@ -1,8 +1,8 @@
-import { IonCard, IonIcon, IonCardContent, IonItem, IonChip, IonItemDivider, IonButton } from '@ionic/angular/standalone';
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { IonCard, IonIcon, IonCardContent, IonChip, IonItemDivider, IonButton } from '@ionic/angular/standalone';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ambulance, AmbulanceType } from 'src/app/core/models/ambulance.model';
-import { arrowForwardCircleOutline,arrowForwardOutline,carOutline, carSharp, happyOutline, happySharp, medicalOutline, medicalSharp, peopleOutline, pulseOutline, pulseSharp } from 'ionicons/icons';
+import { arrowForwardCircleOutline,arrowForwardOutline,carOutline, carSharp, cubeOutline, ellipse, happySharp, medicalSharp, peopleOutline, pulseSharp } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 
 @Component({
@@ -19,7 +19,7 @@ export class AmbulanceCardComponent {
   readonly #router = inject(Router);
 
   constructor() {
-    addIcons({ carSharp, pulseSharp, medicalSharp, happySharp, arrowForwardOutline });
+    addIcons({ carSharp, pulseSharp, medicalSharp, happySharp, arrowForwardOutline, peopleOutline, cubeOutline, ellipse });
   }
 
   getTypeIcon(type: AmbulanceType): string {
@@ -42,9 +42,7 @@ export class AmbulanceCardComponent {
     return labels[type] || type;
   }
 
-  onViewDetails(): void {
-    console.log('Navigating to ambulance details for ID:', this.ambulance._id);
-    
+  onViewDetails(): void {    
     this.#router.navigate(['/ambulances', this.ambulance._id]);
   }
 
