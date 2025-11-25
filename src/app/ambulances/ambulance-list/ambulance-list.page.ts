@@ -8,12 +8,13 @@ import { addIcons } from 'ionicons';
 import { bandageOutline, carOutline, fitnessOutline, medicalOutline, medkitOutline, medkitSharp } from 'ionicons/icons';
 import { FooterComponent } from 'src/app/footer/footer.component';
 import { RouterLink, RouterModule } from '@angular/router';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @Component({
-  selector: 'app-tab2',
+  selector: 'app-ambulance-list',
   templateUrl: 'ambulance-list.page.html',
   styleUrls: ['ambulance-list.page.scss'],
-  imports: [RouterLink, RouterModule, FooterComponent, IonCol, IonGrid, IonRow, IonHeader, IonIcon, IonContent, AmbulanceCardComponent, IonToolbar, IonTitle, IonButtons, IonButton]
+  imports: [RouterModule, HeaderComponent, FooterComponent, IonCol, IonGrid, IonRow, IonHeader, IonIcon, IonContent, AmbulanceCardComponent]
 })
 export class AmbulanceListPage {
 

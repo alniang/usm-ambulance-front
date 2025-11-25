@@ -6,15 +6,20 @@ import { ActivatedRoute } from '@angular/router';
 import { AmbulanceService } from 'src/app/core/services/ambulance.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { AmbulanceType } from 'src/app/core/models/ambulance.model';
-import { checkmarkCircleOutline, closeCircleOutline, informationCircleOutline, informationCircleSharp, peopleOutline } from 'ionicons/icons';
+import { checkmarkCircleOutline, closeCircleOutline, informationCircleOutline, informationCircleSharp, medkitOutline, peopleOutline, settingsOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { HeaderComponent } from 'src/app/header/header.component';
+import { FooterComponent } from 'src/app/footer/footer.component';
 
 @Component({
   selector: 'app-ambulance-details',
   templateUrl: './ambulance-details.page.html',
   styleUrls: ['./ambulance-details.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, IonIcon,
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    IonContent, CommonModule, FormsModule, IonIcon,
     IonChip, IonItemDivider]
 })
 export class AmbulanceDetailsPage {
@@ -26,7 +31,7 @@ export class AmbulanceDetailsPage {
 
   readonly ambulance =toSignal(this.#ambulanceService.getById(this.#ambulanceId));
   constructor() {
-    addIcons({checkmarkCircleOutline, informationCircleOutline, peopleOutline, informationCircleSharp, closeCircleOutline})
+    addIcons({checkmarkCircleOutline, informationCircleOutline, peopleOutline, informationCircleSharp, closeCircleOutline, settingsOutline, medkitOutline})
   }
 
   getTypeLabel(type: AmbulanceType): string {

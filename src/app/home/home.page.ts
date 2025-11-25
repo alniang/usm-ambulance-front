@@ -5,6 +5,7 @@ import { add, carOutline, cashOutline, checkmarkOutline, heartSharp, timeOutline
 import { addIcons } from 'ionicons';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
 interface Feature {
   icon: string;
@@ -18,17 +19,13 @@ interface Feature {
   styleUrls: ['home.page.scss'],
   imports: [
     RouterModule, 
-    RouterLink, 
     FooterComponent, 
-    IonButtons, 
+    HeaderComponent,
     IonContent, 
     IonCard, 
     IonIcon, 
     IonButton,
     IonCardContent, 
-    IonTitle, 
-    IonToolbar, 
-    IonHeader
   ],
 })
 export class HomePage {
