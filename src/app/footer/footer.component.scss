@@ -88,19 +88,6 @@
   }
 }
 
-ion-footer {
-    background-color: #b71c1c;
-}
-// ion-footer {
-//   --background: #f2f2f2;
-//   --color: #333;
-//   border-top: 1px solid #ddd;
-// }
-
-// ion-toolbar {
-//   --background: #f2f2f2;
-//   --color: #333;
-// }
 ion-header {
   position: sticky;
   top: 0;
@@ -108,6 +95,7 @@ ion-header {
 }
 
 ion-footer {
+  background-color: #F92000;
   position: sticky;
   bottom: 0;
   z-index: 10;
