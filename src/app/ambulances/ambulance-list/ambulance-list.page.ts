@@ -9,6 +9,9 @@ import { bandageOutline, carOutline, fitnessOutline, medicalOutline, medkitOutli
 import { FooterComponent } from 'src/app/footer/footer.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { HeaderComponent } from 'src/app/header/header.component';
+import { FieldValue, Firestore, Timestamp, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { Ambulance} from 'src/app/core/models/ambulance.model';
 
 @Component({
   selector: 'app-ambulance-list',
@@ -19,11 +22,11 @@ import { HeaderComponent } from 'src/app/header/header.component';
 export class AmbulanceListPage {
 
   readonly #ambulanceService = inject(AmbulanceService)
-  readonly ambulanceList = toSignal(this.#ambulanceService.getAll(), {initialValue: []} );
+  readonly ambulanceList = toSignal(this.#ambulanceService.getAmbulances(), {initialValue: []} );
   readonly searchTerm = signal('');
-  
+
   constructor() {
     addIcons({ carOutline, medkitOutline, medkitSharp, bandageOutline, medicalOutline, fitnessOutline });
   }
-
+  
 }

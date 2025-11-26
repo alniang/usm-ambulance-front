@@ -28,8 +28,8 @@ export class AmbulanceDetailsPage {
   readonly #ambulanceService = inject(AmbulanceService);
   readonly #ambulanceId = this.#route.snapshot.paramMap.get('id')!;
 
+  readonly ambulance =toSignal(this.#ambulanceService.getAmbulanceById(this.#ambulanceId));
 
-  readonly ambulance =toSignal(this.#ambulanceService.getById(this.#ambulanceId));
   constructor() {
     addIcons({checkmarkCircleOutline, informationCircleOutline, peopleOutline, informationCircleSharp, closeCircleOutline, settingsOutline, medkitOutline})
   }
