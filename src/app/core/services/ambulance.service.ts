@@ -48,4 +48,14 @@ export class AmbulanceService {
     return collectionData(ambulanceColRef, {idField: '_id'}) as Observable<Ambulance[]>;
   }
 
+  add(message: any){
+    const messageRef = collection(this.fs, "messages");
+    return addDoc(messageRef, message)
+  }
+
+  getMessages(){
+    const messageColRef = collection(this.fs, "messages");
+    return collectionData(messageColRef, {idField: '_id'}) as Observable<Ambulance[]>;
+  }
+
 }

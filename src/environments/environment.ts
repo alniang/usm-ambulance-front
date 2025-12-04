@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-
   // Configuration Firebase
   firebase : {
     projectId: "usm-ambulances", 

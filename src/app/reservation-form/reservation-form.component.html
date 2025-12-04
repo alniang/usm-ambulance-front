@@ -1,0 +1,107 @@
+<div class="container">
+  <mat-card class="form-card">
+
+    <mat-card-header>
+      <mat-card-title class="title">Réserver une ambulance</mat-card-title>
+      <mat-card-subtitle class="subtitle">
+        Complétez les informations ci-dessous
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="formGroup" (ngSubmit)="submit($event)" class="form-grid">
+
+        <!-- NOM -->
+        <mat-form-field appearance="fill">
+          <mat-label>Nom</mat-label>
+          <mat-icon matPrefix>account_circle</mat-icon>
+          <input matInput formControlName="nom">
+          @if (formGroup.get('nom')?.touched && formGroup.get('nom')?.invalid) {
+            <mat-error>
+              Le nom est requis (min 2 caractères)
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- PRENOM -->
+        <mat-form-field appearance="fill">
+          <mat-label>Prénom</mat-label>
+          <mat-icon matPrefix>badge</mat-icon>
+          <input matInput formControlName="prenom">
+          @if (formGroup.get('prenom')?.touched && formGroup.get('prenom')?.invalid) {
+            <mat-error>
+              Le prénom est requis (min 2 caractères)
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- ADRESSE -->
+        <mat-form-field appearance="fill" class="full">
+          <mat-label>Adresse</mat-label>
+          <mat-icon matPrefix>home</mat-icon>
+          <textarea matInput rows="2" formControlName="adresse"></textarea>
+          @if (formGroup.get('adresse')?.touched && formGroup.get('adresse')?.invalid) {
+            <mat-error>
+              L'adresse est requise (min 5 caractères)
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- TELEPHONE -->
+         <mat-form-field appearance="fill">
+          <mat-label>Téléphone</mat-label>
+          <mat-icon matPrefix>phone</mat-icon>
+          <input matInput formControlName="adresse">
+          @if (formGroup.get('adresse')?.touched && formGroup.get('adresse')?.invalid) {
+            <mat-error>
+              L'adresse est requise (min 5 caractères)
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- DESTINATION -->
+        <mat-form-field appearance="fill">
+          <mat-label>Destination</mat-label>
+          <mat-icon matPrefix>place</mat-icon>
+          <input matInput formControlName="destination">
+          @if (formGroup.get('destination')?.touched && formGroup.get('destination')?.invalid) {
+            <mat-error>
+              La destination est requise
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- DATE -->
+        <mat-form-field appearance="fill">
+          <mat-label>Date du voyage</mat-label>
+          <mat-icon matPrefix>event</mat-icon>
+          <input matInput [matDatepicker]="picker" formControlName="date">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          @if (formGroup.get('date')?.touched && formGroup.get('date')?.invalid) {
+            <mat-error>
+              La date est requise
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- DURÉE -->
+        <mat-form-field appearance="fill">
+          <mat-label>Durée (jours)</mat-label>
+          <mat-icon matPrefix>timelapse</mat-icon>
+          <input matInput type="number" formControlName="duree">
+          @if (formGroup.get('duree')?.touched && formGroup.get('duree')?.invalid) {
+            <mat-error>
+              Minimum 1 jour
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <!-- SUBMIT -->
+        <button mat-raised-button color="primary" class="submit-btn" type="submit" [disabled]="formGroup.invalid">
+          Envoyer la réservation
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

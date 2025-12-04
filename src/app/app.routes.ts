@@ -1,3 +1,4 @@
+// import { HomePage } from './home/home.page';
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs/tabs.page';
 
@@ -18,6 +19,7 @@ export const routes: Routes = [
     path: 'ambulances/:id',
     loadComponent: () => import('./ambulances/ambulance-details/ambulance-details.page').then( m => m.AmbulanceDetailsPage)
   },
+  { path: 'admin', loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent)},
 
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '**', redirectTo: 'home'} // Tout le temps le positionner en dernier car le router d'angular fonctionne du haut vers le bas!!

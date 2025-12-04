@@ -21,7 +21,7 @@ import { Ambulance} from 'src/app/core/models/ambulance.model';
 })
 export class AmbulanceListPage {
 
-  readonly #ambulanceService = inject(AmbulanceService)
+  readonly #ambulanceService = inject(AmbulanceService);
   readonly ambulanceList = toSignal(this.#ambulanceService.getAmbulances(), {initialValue: []} );
   readonly searchTerm = signal('');
 

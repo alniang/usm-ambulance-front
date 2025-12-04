@@ -1,11 +1,24 @@
-import { Component, inject } from '@angular/core';
-import { IonCard, IonButton, IonIcon, IonContent, IonCardContent, IonTitle, IonToolbar, IonHeader, IonButtons } from '@ionic/angular/standalone';
+import { Message } from '../core/models/message.model';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, inject, OnInit } from '@angular/core';
+import { IonCard, IonButton, IonIcon, IonContent, IonCardContent, IonTitle, IonToolbar, IonHeader, IonButtons, IonList, IonItem, IonLabel, IonInput, IonNote } from '@ionic/angular/standalone';
 
 import { add, carOutline, cashOutline, checkmarkOutline, heartSharp, timeOutline, timerOutline, calendarOutline, callSharp } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MessageService } from '../core/services/message.service';
+import { AmbulanceService } from '../core/services/ambulance.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { ReservationFormComponent } from '../reservation-form/reservation-form.component';
 
 interface Feature {
   icon: string;
@@ -19,17 +32,43 @@ interface Feature {
   styleUrls: ['home.page.scss'],
   imports: [
     RouterModule, 
+    ReactiveFormsModule,
+    ReservationFormComponent,
     FooterComponent, 
     HeaderComponent,
     IonContent, 
     IonCard, 
     IonIcon, 
     IonButton,
-    IonCardContent, 
+    IonCardContent,
+    MatCardModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule
   ],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   readonly router = inject(Router);
+  private fb = inject(FormBuilder);
+  private ambulanceService = inject(AmbulanceService)
+  private messageService = inject(MessageService); 
+  private breakpointObserver = inject(BreakpointObserver)
+
+  isMobileOrTablet = false;
+
+  formGroup = this.fb.group({
+    nom: ['', [Validators.required, Validators.minLength(2)]],
+    prenom: ['', [Validators.required, Validators.minLength(2)]],
+    adresse: ['', [Validators.required, Validators.minLength(5)]],
+    destination: ['', [Validators.required]],
+    date: ['', [Validators.required]],
+    duree: [null, [Validators.required, Validators.min(1)]],
+  });
+
+  // message = Object.assign(new Message, this.formGroup.value);
 
   callEmergencyWhatsapp() {
     const phone = '221766365050'; 
@@ -82,5 +121,30 @@ export class HomePage {
 
   constructor() {
     addIcons({ add, cashOutline,timerOutline,heartSharp, timeOutline, checkmarkOutline, carOutline, calendarOutline, callSharp})
+  }
+
+  ngOnInit(): void {
+    this.breakpointObserver
+      .observe([Breakpoints.Handset, Breakpoints.Tablet])
+      .subscribe(result => {
+      this.isMobileOrTablet = result.matches;
+    });
+  }
+
+  submit(event: Event){
+    event.preventDefault(); 
+    // console.log(this.message);
+       
+    // this.messageService.addMessage(this.message)
+    if (!this.formGroup.valid) return;
+
+
+    const message = { ...this.formGroup.value };  // 👉 objet simple compatible Firestore
+
+    console.log(message);
+    this.messageService.addMessage(message)
+      .then(() => {
+        this.formGroup.reset();
+      });
   }
 }
