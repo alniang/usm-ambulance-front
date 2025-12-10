@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Confirmation</h2>
+
+<mat-dialog-content>
+  Voulez-vous vraiment supprimer ce message ?
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button matButton mat-dialog-close (click)="close(false)">Annuler</button>
+  <button matButton mat-dialog-close cdkFocusInitial (click)="close(true)">
+    Supprimer
+  </button>
+</mat-dialog-actions>
