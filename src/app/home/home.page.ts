@@ -1,11 +1,10 @@
-import { Message } from '../core/models/message.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, inject, OnInit } from '@angular/core';
-import { IonCard, IonButton, IonIcon, IonContent, IonCardContent, IonTitle, IonToolbar, IonHeader, IonButtons, IonList, IonItem, IonLabel, IonInput, IonNote } from '@ionic/angular/standalone';
+import { IonIcon, IonContent, IonHeader} from '@ionic/angular/standalone';
 
-import { add, carOutline, cashOutline, checkmarkOutline, heartSharp, timeOutline, timerOutline, calendarOutline, callSharp } from 'ionicons/icons';
+import { add, carOutline, cashOutline, checkmarkOutline, heartSharp, timeOutline, timerOutline, calendarOutline, callSharp, shieldOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -37,10 +36,8 @@ interface Feature {
     FooterComponent, 
     HeaderComponent,
     IonContent, 
-    IonCard, 
+    IonHeader,
     IonIcon, 
-    IonButton,
-    IonCardContent,
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
@@ -53,7 +50,6 @@ interface Feature {
 export class HomePage implements OnInit {
   readonly router = inject(Router);
   private fb = inject(FormBuilder);
-  private ambulanceService = inject(AmbulanceService)
   private messageService = inject(MessageService); 
   private breakpointObserver = inject(BreakpointObserver)
 
@@ -120,7 +116,7 @@ export class HomePage implements OnInit {
   ];
 
   constructor() {
-    addIcons({ add, cashOutline,timerOutline,heartSharp, timeOutline, checkmarkOutline, carOutline, calendarOutline, callSharp})
+    addIcons({ add, cashOutline,timerOutline,heartSharp, timeOutline, checkmarkOutline, carOutline, calendarOutline, callSharp, shieldOutline})
   }
 
   ngOnInit(): void {
@@ -129,22 +125,5 @@ export class HomePage implements OnInit {
       .subscribe(result => {
       this.isMobileOrTablet = result.matches;
     });
-  }
-
-  submit(event: Event){
-    event.preventDefault(); 
-    // console.log(this.message);
-       
-    // this.messageService.addMessage(this.message)
-    if (!this.formGroup.valid) return;
-
-
-    const message = { ...this.formGroup.value };  // 👉 objet simple compatible Firestore
-
-    console.log(message);
-    this.messageService.addMessage(message)
-      .then(() => {
-        this.formGroup.reset();
-      });
   }
 }

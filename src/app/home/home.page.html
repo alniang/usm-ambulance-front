@@ -1,105 +1,58 @@
-<app-header></app-header>
+<ion-header>
+  <app-header></app-header>
+</ion-header>
 
 <ion-content fullscreen="true">
-  <!-- Hero Section -->
-  <section class="hero gradient-bg-primary">
-    <div></div>
-    <div class="container hero-content">
-      <h1 class="hero-title">Transport Médical d'Excellence</h1>
-      <p class="hero-subtitle">
-        Réservez votre ambulance en quelques clics - Service disponible 24h/24 et 7j/7
+    
+  <div class="hero gradient-bg-primary">
+    <div class="hero__content">
+      <h1 class="hero__title">Transport Médical d'Excellence</h1>
+      <p class="hero__subtitle">
+        Service de transport médical rapide et fiable. Réservez votre ambulance en quelques clics.
       </p>
-      <div class="hero-buttons">
-        <ion-button shape="round" fill="clear" color="medium"  
-                class="btn-large btn-white" 
-                (click)="navigateToAmbulances()">
-          <ion-icon name="car-outline"></ion-icon>
-          Voir les Ambulances
-        </ion-button>
-        <ion-button shape="round" fill="clear" color="medium"  
-                class="btn-large btn-outline-white" 
-                (click)="callEmergencyWhatsapp()">
-          <ion-icon name="call-sharp"></ion-icon>
-          Urgence - Appel Direct
-        </ion-button>
-      </div>
     </div>
-  </section>
-  @if (isMobileOrTablet) {
+
+    <div class="container hero__services">
+
+      <div class="service">
+        <div class="service__icon">
+          <ion-icon name="time-outline"></ion-icon>
+        </div>
+        <div class="service__content">
+          <h3 class="service__title">Disponible 24/7</h3>
+          <p class="service__description">Service d'urgence à tout moment</p>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service__icon">
+          <!-- <ion-icon name="time-outline"></ion-icon> -->
+          <ion-icon name="shield-outline"></ion-icon>
+        </div>
+        <div class="service__content">
+          <h3 class="service__title">Équipe certifiée</h3>
+          <p class="service__description">Personnel médical qualifié</p>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service__icon">
+          <ion-icon name="call-outline"></ion-icon>
+        </div>
+        <div class="service__content">
+          <h3 class="service__title">Support direct</h3>
+          <p class="service__description">Assistance téléphonique</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <!-- @if (isMobileOrTablet) { -->
     <section class="features-section">
       <app-reservation-form></app-reservation-form>
     </section>
-  }
-   <!-- Features Section -->
-  <section class="features-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Pourquoi choisir USM Ambulances ?</h2>
-        <p class="section-subtitle">
-          Service professionnel de transport médical avec une flotte moderne et équipée
-        </p>
-      </div>
-
-      <div class="features-grid">
-        @for (feature of features; track $index) {
-          <ion-card class="feature-card">
-            <div class="feature-icon gradient-bg-primary">
-              <ion-icon [name]="feature.icon"></ion-icon>
-            </div>
-            <ion-card-content>
-              <h3>{{feature.title}}</h3>
-              <p>{{feature.description}}</p>
-            </ion-card-content>
-          </ion-card>
-        }
-      </div>
-    </div>
-  </section>
-
-    <!-- Statistics Section -->
-  <section class="stats-section gradient-bg-primary">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Années d'expérience</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">15</div>
-          <div class="stat-label">Ambulances disponibles</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">5000+</div>
-          <div class="stat-label">Patients transportés</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Service continu</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-content">
-        <h2>Besoin d'une ambulance maintenant ?</h2>
-        <p>Notre équipe est prête à intervenir immédiatement pour vous assister</p>
-        <div class="cta-buttons">
-          <ion-button shape="round" color="medium" fill="outline" class="cta-btn-large" (click)="navigateToAmbulances()">
-          <ion-icon name="calendar-outline"></ion-icon>            
-          Réserver une ambulance
-          </ion-button>
-          <!-- </button> -->
-          <ion-button shape="round" color="medium" fill="outline"  class="cta-btn-large" (click)="callEmergency()">
-            <ion-icon name="call-sharp"></ion-icon>
-            Appeler maintenant
-          </ion-button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- } -->
 
 </ion-content>
 

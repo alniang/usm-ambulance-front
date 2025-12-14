@@ -1,10 +1,13 @@
+import { Timestamp } from "@angular/fire/firestore";
+
 export class Message {
     _id!: string;
     nom!: string;
-    prenom!: string;
+    telephone!: string;
     adresse!: string;
     destination!: string;
     date!: Date;
-    duree!: number;
+    heure!: string;
+    infos!: string;
     read! : boolean
 }
