@@ -14,7 +14,7 @@
 
         <!-- NOM -->
         <mat-form-field appearance="fill">
-          <mat-label>Nom du patient</mat-label>
+          <mat-label>Prénom et nom du patient</mat-label>
           <mat-icon matPrefix>account_circle</mat-icon>
           <input matInput formControlName="nom" placeholder="Ibrahima Sow">
           @if (hasError('nom')) {
@@ -23,18 +23,6 @@
             </mat-error>
           }
         </mat-form-field>
-
-        <!-- PRENOM -->
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>Prénom</mat-label>
-          <mat-icon matPrefix>badge</mat-icon>
-          <input matInput formControlName="prenom">
-          @if (formGroup.get('prenom')?.touched && formGroup.get('prenom')?.invalid) {
-            <mat-error>
-              Le prénom est requis (min 2 caractères)
-            </mat-error>
-          }
-        </mat-form-field> -->
 
         <!-- TELEPHONE -->
          <mat-form-field appearance="fill">

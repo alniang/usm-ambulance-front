@@ -1,11 +1,8 @@
+// import { TableauDeBordComponent } from './admin/admin.component';
 // import { HomePage } from './home/home.page';
 import { Routes } from '@angular/router';
-import { TabsPage } from './tabs/tabs.page';
 
-export const routes: Routes = [
-  // { path: 'tabs', component: TabsPage, children: [
-
-  
+export const routes: Routes = [  
   {
     path: 'ambulances/:id',
     loadComponent: () => import('./ambulances/ambulance-details/ambulance-details.page').then( m => m.AmbulanceDetailsPage)
@@ -19,18 +16,13 @@ export const routes: Routes = [
     path: 'ambulances/:id',
     loadComponent: () => import('./ambulances/ambulance-details/ambulance-details.page').then( m => m.AmbulanceDetailsPage)
   },
-  { path: 'admin', loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent)},
-
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: '**', redirectTo: 'home'} // Tout le temps le positionner en dernier car le router d'angular fonctionne du haut vers le bas!!
-
-  // ]
-// },
-,
-{
-  path: '',
-  redirectTo: '/home',
-  pathMatch: 'full',
-},
-
+  {
+    path: 'tableau-de-bord', loadComponent: () => import('./tableau-de-bord/tableau-de-bord.component').then( m => m.TableauDeBordComponent)
+  },
+  { 
+    path: '', redirectTo: 'home', pathMatch: 'full'
+  },
+  { 
+    path: '**', redirectTo: 'home'
+  } // Tout le temps le positionner en dernier car le router d'angular fonctionne du haut vers le bas!!
 ];

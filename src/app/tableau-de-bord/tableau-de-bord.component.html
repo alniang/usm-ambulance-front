@@ -1,0 +1,125 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <h1>USM - AMBULANCES</h1>
+    <button mat-icon-button [matBadge]="unread" matBadgeColor="warn">
+      <mat-icon>mail</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+@if (!isMobile) {
+  <ion-content>
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav opened mode="side">
+        <mat-nav-list>
+          @for(msg of messages; track msg._id) {
+            <a mat-list-item
+              (click)="openMessage(msg)"
+              class="msg-item"
+              [ngStyle]="selectedMessageStyleFunc(msg)"
+              [class.unread]="!msg.read"
+              >
+              <div [ngStyle]="!msg.read ? {'font-size': 'larger', 'color': '#25B7FF'} : {}">
+                {{ msg.nom }}  
+              </div>
+            </a>        
+          }
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        @if(selectedMessage) {
+          <div class="message-detail animate-slide-fade">
+    
+            <h2>Détails du message</h2>
+    
+            <mat-card>
+              <mat-card-content>
+                <p><strong>Nom :</strong> {{ selectedMessage.nom }}</p>
+                <p><strong>Téléphone :</strong> {{ selectedMessage.telephone }}</p>
+                <p><strong>Adresse :</strong> {{ selectedMessage.adresse }}</p>
+                <p><strong>Destination :</strong> {{ selectedMessage.destination }}</p>
+                <p><strong>Date :</strong> {{ selectedMessage.date | date:'EEEE dd MMMM yyyy':'':'fr-FR' }} à {{ selectedMessage.heure }}</p>
+                <p><strong>Notes suplémentaires :</strong> {{ selectedMessage.infos }}</p>
+              </mat-card-content>
+              <button mat-icon-button (click)="deleteMessage(selectedMessage)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card>
+          </div>
+        }
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </ion-content>
+}
+
+@if (isMobile) {
+  <ion-content class="outlook-container">
+  
+    <!-- LISTE DES MESSAGES -->
+    @if(!selectedMessage) {
+      <div class="outlook-list">
+  
+        <div class="outlook-header">
+          <h2>Messages</h2>
+        </div>
+  
+        <mat-nav-list>
+          @for(msg of messages; track msg._id) {
+            <a mat-list-item
+               class="outlook-item"
+               [class.unread]="!msg.read"
+               (click)="openMessage(msg)">
+  
+              <div class="outlook-row">
+                <div class="outlook-main">
+                  <div class="outlook-name">{{ msg.nom }}</div>
+                  <div class="outlook-preview">{{ msg.destination }}</div>
+                </div>
+  
+                <div class="outlook-date">
+                  {{ msg.date | date:'dd/MM' }}
+                </div>
+              </div>
+  
+            </a>
+          }
+        </mat-nav-list>
+  
+      </div>
+    }
+  
+    <!-- DÉTAIL DU MESSAGE -->
+    @if(selectedMessage) {
+      <div class="outlook-detail animate-slide">
+  
+        <div class="outlook-header">
+          <button mat-icon-button (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+  
+          <span class="header-title">Message</span>
+  
+          <button mat-icon-button color="warn"
+                  (click)="deleteMessage(selectedMessage)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+  
+        <div class="outlook-content">
+          <p><strong>Nom</strong><br>{{ selectedMessage.nom }}</p>
+          <p><strong>Téléphone</strong><br>{{ selectedMessage.telephone }}</p>
+          <p><strong>Adresse</strong><br>{{ selectedMessage.adresse }}</p>
+          <p><strong>Destination</strong><br>{{ selectedMessage.destination }}</p>
+          <p>
+            <strong>Date</strong><br>
+            {{ selectedMessage.date | date:'EEEE dd MMMM yyyy':'':'fr-FR' }}
+            à {{ selectedMessage.heure }}
+          </p>
+          <p><strong>Notes</strong><br>{{ selectedMessage.infos }}</p>
+        </div>
+  
+      </div>
+    }
+  
+  </ion-content>
+}

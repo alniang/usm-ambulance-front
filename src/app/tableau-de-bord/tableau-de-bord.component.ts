@@ -14,12 +14,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { IonContent } from '@ionic/angular/standalone';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
-  selector: 'app-admin',
+  selector: 'app-tableau-de-bord',
   imports: [
     CommonModule,
     DatePipe,
+    IonContent, 
     MatBadgeModule,
     MatIconModule,
     MatCardModule,
@@ -29,15 +32,17 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
     MatButtonModule,
     NgStyle
 ],
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  templateUrl: './tableau-de-bord.component.html',
+  styleUrls: ['./tableau-de-bord.component.scss'],
 })
-export class AdminComponent  implements OnInit {
+export class TableauDeBordComponent  implements OnInit {
 
   private messageService = inject(MessageService);
   private dialog: MatDialog = inject(MatDialog);  
   readonly messageList = toSignal(this.messageService.getMessages(), {initialValue: []} );
-  readonly #ambulanceService = inject(AmbulanceService);
+  private breakpointObserver = inject(BreakpointObserver);
+  isMobile = false;
+
   unread = 0;
   unreadCount = 0;
   messages: Message[] = [];
@@ -57,6 +62,11 @@ export class AdminComponent  implements OnInit {
       this.unread = messages.filter(m => !m.read).length;  // 👈 compteur auto
       console.log("MESSAGE NON LUE: ", this.unread);      
     });
+
+    this.breakpointObserver.observe([Breakpoints.Handset])
+      .subscribe(result => {
+        this.isMobile = result.matches;
+      });
   }
 
   openMessage(msg: Message) {
@@ -68,6 +78,10 @@ export class AdminComponent  implements OnInit {
       this.unread-- ;
       this.messageService.markAsRead(msg._id); 
     }
+  }
+
+  goBack() {
+    this.selectedMessage = null;
   }
 
   selectedMessageStyleFunc(msg: Message) {

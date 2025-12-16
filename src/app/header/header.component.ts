@@ -7,11 +7,7 @@ import { IonButton, IonButtons, IonHeader, IonIcon, IonTitle, IonToolbar } from 
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   imports: [
-    RouterModule, 
-    RouterLink, 
-    IonButtons,
-    IonIcon, 
-    IonButton,
+    RouterModule,
     IonTitle, 
     IonToolbar, 
     IonHeader

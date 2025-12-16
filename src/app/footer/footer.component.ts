@@ -9,13 +9,8 @@ import { add, helpCircleOutline, trash, homeOutline, cashOutline, timerOutline, 
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
   imports: [
-    RouterLink,
     RouterModule,
     IonFooter,
-    IonIcon,
-    IonTabBar,
-    IonTabButton,
-    IonLabel,
   ]
 })
 export class FooterComponent  implements OnInit {

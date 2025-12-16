@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, inject, OnInit } from '@angular/core';
-import { IonIcon, IonContent, IonHeader} from '@ionic/angular/standalone';
+import { IonIcon, IonContent, IonHeader, IonFooter} from '@ionic/angular/standalone';
 
 import { add, carOutline, cashOutline, checkmarkOutline, heartSharp, timeOutline, timerOutline, calendarOutline, callSharp, shieldOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
@@ -37,6 +37,7 @@ interface Feature {
     HeaderComponent,
     IonContent, 
     IonHeader,
+    IonFooter,
     IonIcon, 
     MatCardModule,
     MatIconModule,

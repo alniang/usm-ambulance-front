@@ -1,0 +1,179 @@
+mat-toolbar {
+  background-color: #25B7FF;
+  color: white;
+}
+
+h2 {
+  margin-top: 18px;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.mat-sidenav-container {
+  height: 100vh;
+}
+
+mat-card {
+  margin: 0 115px 0 115px;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+mat-sidenav {
+  width: 300px;
+  background-color: #eee;
+  border-radius: 0px;
+}
+
+a.msg-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .7rem;
+  border-radius: 0px;
+  cursor: pointer;
+
+  &.unread {
+    font-weight: 600;
+  }
+}
+
+mat-toolbar-row {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  height: var(--mat-toolbar-standard-height, 64px);
+  justify-content: space-between;
+}
+
+
+.container {
+  height: 100%;
+}
+
+.msg-title {
+  font-weight: bold;
+}
+
+.msg-sub {
+  font-size: 12px;
+  color: gray;
+}
+
+.unread .msg-title {
+  color: #25B7FF;
+}
+
+.message-detail {
+  padding: 16px;
+}
+
+@media (max-width: 768px) {
+  mat-card {
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+
+.outlook-container {
+  background: #ffffff;
+  height: 100%;
+}
+
+/* HEADER */
+.outlook-header {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 8px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.outlook-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* LISTE */
+.outlook-item {
+  height: 64px;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.outlook-row {
+  display: flex;
+  align-items: center;
+}
+
+.outlook-main {
+  flex: 1;
+  overflow: hidden;
+}
+
+.outlook-name {
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.outlook-preview {
+  font-size: 13px;
+  color: #6b6b6b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* DATE */
+.outlook-date {
+  font-size: 12px;
+  color: #6b6b6b;
+}
+
+/* NON LU */
+.unread .outlook-name {
+  font-weight: 600;
+  color: #0078d4;
+}
+
+.unread .outlook-preview {
+  color: #0078d4;
+}
+
+/* DETAIL */
+.outlook-detail {
+  height: 100%;
+}
+
+.outlook-content {
+  padding: 16px;
+}
+
+/* ANIMATION */
+.animate-slide {
+  animation: slideIn 0.25s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
