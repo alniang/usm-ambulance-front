@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-// import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { IonApp, IonContent, IonRouterOutlet } from '@ionic/angular/standalone';
 import { add, homeOutline,cashOutline, timerOutline, heartSharp, timeOutline, checkmarkOutline, carOutline, calendarOutline, callSharp, trash, helpCircleOutline, medicalOutline, alertCircleOutline, locationOutline, mailOutline, callOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';

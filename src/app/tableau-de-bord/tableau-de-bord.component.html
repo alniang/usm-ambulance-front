@@ -1,9 +1,26 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <h1>USM - AMBULANCES</h1>
-    <button mat-icon-button [matBadge]="unread" matBadgeColor="warn">
-      <mat-icon>mail</mat-icon>
-    </button>
+    <span class="spacer">
+      <button 
+        matTooltip="Messages non lus"
+        matTooltipPosition="below"  
+        mat-icon-button 
+        [matBadge]="unread"   
+        matBadgeColor="warn"
+      >
+        <mat-icon>mail</mat-icon>
+      </button>
+      <button
+        matTooltip="Déconnexion"
+        matTooltipPosition="below"
+        mat-icon-button
+        color="warn"
+        (click)="logout()"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+    </span>
   </mat-toolbar-row>
 </mat-toolbar>
 

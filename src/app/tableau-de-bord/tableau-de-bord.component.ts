@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +17,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { IonContent } from '@ionic/angular/standalone';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AuthService } from '../core/services/auth.services';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tableau-de-bord',
@@ -30,6 +34,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     MatListModule,
     MatToolbarModule,
     MatButtonModule,
+    MatTooltipModule,
     NgStyle
 ],
   templateUrl: './tableau-de-bord.component.html',
@@ -37,10 +42,13 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class TableauDeBordComponent  implements OnInit {
 
+  private authService = inject(AuthService);
+  private router = inject(Router);
   private messageService = inject(MessageService);
   private dialog: MatDialog = inject(MatDialog);  
   readonly messageList = toSignal(this.messageService.getMessages(), {initialValue: []} );
   private breakpointObserver = inject(BreakpointObserver);
+  private snackBar = inject(MatSnackBar);
   isMobile = false;
 
   unread = 0;
@@ -53,14 +61,10 @@ export class TableauDeBordComponent  implements OnInit {
     'font-weight': 'bold'
   };
 
-  // readonly messageList = toSignal(this.#ambulanceService.getMessages(), {initialValue: []} );
-  constructor() { }
-
   ngOnInit() {
     this.messageService.getMessages().subscribe(messages => {
       this.messages = messages;
       this.unread = messages.filter(m => !m.read).length;  // 👈 compteur auto
-      console.log("MESSAGE NON LUE: ", this.unread);      
     });
 
     this.breakpointObserver.observe([Breakpoints.Handset])
@@ -95,7 +99,6 @@ export class TableauDeBordComponent  implements OnInit {
   }
 
   deleteMessage(msg: Message) {
-    console.log("DELETE MESSAGE ID: ", msg._id);
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       // data: msg
@@ -104,7 +107,7 @@ export class TableauDeBordComponent  implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     if (result) {
       this.messageService.deleteMessage(msg._id).then(() => {
-        console.log("Message supprimé avec succès :", msg);
+        this.snackBar.open('Le message est bien supprimé', 'OK', { duration: 3000 });
         // Met à jour la liste locale des messages
         this.messages = this.messages.filter(m => m._id !== msg._id);
 
@@ -116,6 +119,18 @@ export class TableauDeBordComponent  implements OnInit {
         console.error("Erreur lors de la suppression du message :", error);
       });
     }
+    });
+  }
+
+  logout() {
+    this.authService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+        this.snackBar.open('Vous êtes déconnecté avec succès', 'OK', { duration: 3000 });
+      },
+      error: err => {
+        console.error('Erreur logout', err);
+      }
     });
   }
 }

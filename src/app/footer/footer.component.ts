@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
-import { IonFooter, IonIcon, IonLabel, IonTabBar, IonTabButton } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { add, helpCircleOutline, trash, homeOutline, cashOutline, timerOutline, heartSharp, timeOutline, checkmarkOutline, carOutline, calendarOutline, callSharp, medicalOutline, alertCircleOutline, locationOutline, mailOutline, callOutline } from 'ionicons/icons';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { IonFooter } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-footer',
@@ -13,16 +11,4 @@ import { add, helpCircleOutline, trash, homeOutline, cashOutline, timerOutline, 
     IonFooter,
   ]
 })
-export class FooterComponent  implements OnInit {
-
-  constructor() {
-    addIcons({ add, helpCircleOutline, trash, homeOutline, cashOutline,timerOutline,heartSharp, timeOutline, checkmarkOutline, carOutline, calendarOutline, callSharp, medicalOutline, alertCircleOutline, locationOutline, mailOutline, callOutline})
-  }
-
-  callEmergency() {
-    window.location.href = 'tel:+221771234567';
-  }
-
-  ngOnInit() {}
-
-}
+export class FooterComponent  {}

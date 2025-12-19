@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
-import { IonButton, IonButtons, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +13,4 @@ import { IonButton, IonButtons, IonHeader, IonIcon, IonTitle, IonToolbar } from 
     IonHeader
   ]
 })
-export class HeaderComponent  implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {}
-
-}
+export class HeaderComponent {}

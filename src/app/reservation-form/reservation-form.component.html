@@ -63,7 +63,6 @@
         <!-- DATE -->
         <mat-form-field appearance="fill">
           <mat-label>Date du voyage</mat-label>
-          <!-- <mat-icon matPrefix>event</mat-icon> -->
           <mat-datepicker-toggle matIconPrefix [for]="picker"></mat-datepicker-toggle>
           <input matInput [matDatepicker]="picker" formControlName="date" [min]="today">
           <mat-datepicker #picker></mat-datepicker>
@@ -94,7 +93,7 @@
         <!-- INFOS SUPPLEMENTAIRES -->
         <mat-form-field appearance="fill" class="full">
           <mat-label>Notes supplémentaires (optionnel)</mat-label>
-          <mat-icon matPrefix>home</mat-icon>
+          <mat-icon matPrefix>info</mat-icon>
           <textarea matInput rows="2" formControlName="infos"></textarea>
         </mat-form-field>
 

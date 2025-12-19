@@ -35,9 +35,10 @@ export class ReservationFormComponent implements OnInit {
   private fb = inject(FormBuilder);
   private messageService = inject(MessageService); 
   private snackBar = inject(MatSnackBar);
+  private selectedDate?: Date;
+  
   submitted = false;
   today: Date = new Date();
-  selectedDate?: Date;
   
   formGroup = this.fb.group({
     nom: ['', [Validators.required, Validators.minLength(2)]],

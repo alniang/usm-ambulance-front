@@ -8,7 +8,7 @@ import { Message } from '../models/message.model';
 })
 export class MessageService {
   private fs = inject(Firestore);
-  messageCol = "messages";
+  private messageCol = "messages";
   
   addMessage(message: any){
     const messageRef = collection(this.fs, this.messageCol);
@@ -16,7 +16,6 @@ export class MessageService {
   }
 
   deleteMessage(id: string) {
-    console.log("DELETE MESSAGE ID SERVICE: ", id );
     const docRef = doc(this.fs, `${this.messageCol}/${id}`);
     return deleteDoc(docRef);
   }

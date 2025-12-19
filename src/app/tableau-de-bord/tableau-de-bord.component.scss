@@ -177,3 +177,11 @@ mat-toolbar-row {
     transform: translateX(0);
   }
 }
+
+.spacer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
