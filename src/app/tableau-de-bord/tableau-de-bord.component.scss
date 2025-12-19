@@ -185,3 +185,19 @@ mat-toolbar-row {
   align-items: center;
   gap: 8px;
 }
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-row{
+  display: flex;
+  justify-content: center;
+}
+
+.desktop {
+  border: 1px solid #eee;
+  border-radius: 20px;
+  margin: 20px 70px;
+}

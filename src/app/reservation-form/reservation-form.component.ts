@@ -44,7 +44,7 @@ export class ReservationFormComponent implements OnInit {
     nom: ['', [Validators.required, Validators.minLength(2)]],
     telephone: ['', [Validators.required]],
     adresse: ['', [Validators.required, Validators.minLength(5)]],
-    destination: ['', [Validators.required]],
+    destination: ['', [Validators.required, Validators.minLength(5)]],
     date: ['', [Validators.required]],
     heure: ['', [Validators.required]],
     infos: [''],
@@ -93,7 +93,6 @@ export class ReservationFormComponent implements OnInit {
 
     const message = { ...this.formGroup.value };  // 👉 objet simple compatible Firestore
 
-    console.log(message);
     this.messageService.addMessage(message)
       .then(() => {
         // Message de succès
@@ -107,10 +106,14 @@ export class ReservationFormComponent implements OnInit {
         );
         // Réinitialisation du formulaire
         this.formGroup.reset();
-        this.formGroup.markAsPristine();
-        this.formGroup.markAsUntouched();
-
         this.submitted = false;
+
+        // Forcer la mise à jour de tous les contrôles
+        Object.keys(this.formGroup.controls).forEach(key => {
+        this.formGroup.get(key)?.setErrors(null);
+        this.formGroup.get(key)?.markAsPristine();
+        this.formGroup.get(key)?.markAsUntouched();
+    });
       })
       .catch(() => {
         // Message d'erreur
@@ -126,8 +129,8 @@ export class ReservationFormComponent implements OnInit {
   }
 
   hasError(controlName: string) {    
-    const control = this.formGroup.get(controlName);
-    return control?.invalid && (control?.touched || control?.dirty)
+    const control = this.formGroup.get(controlName);    
+    return control?.invalid && (control?.touched || control?.dirty || this.submitted);
   }
 
 }

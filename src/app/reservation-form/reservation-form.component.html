@@ -16,10 +16,10 @@
         <mat-form-field appearance="fill">
           <mat-label>Prénom et nom du patient</mat-label>
           <mat-icon matPrefix>account_circle</mat-icon>
-          <input matInput formControlName="nom" placeholder="Ibrahima Sow">
+          <input matInput formControlName="nom">
           @if (hasError('nom')) {
             <mat-error>
-              Le nom est requis (min 2 caractères)
+              Le prénom et le nom du patient sont requis (min 2 caractères)
             </mat-error>
           }
         </mat-form-field>
@@ -28,10 +28,10 @@
          <mat-form-field appearance="fill">
           <mat-label>Téléphone</mat-label>
           <mat-icon matPrefix>phone</mat-icon>
-          <input  matInput appSenegalPhone formControlName="telephone" placeholder="+221 77 123 45 67">
+          <input  matInput appSenegalPhone formControlName="telephone">
           @if (hasError('telephone')) {
             <mat-error>
-              L'adresse est requise (min 5 caractères)
+              Un numéro de téléphone valide est requis (+221 XX XXX XX XX)
             </mat-error>
           }
         </mat-form-field>
@@ -40,10 +40,10 @@
         <mat-form-field appearance="fill" class="full">
           <mat-label>Adresse de prise en charge</mat-label>
           <mat-icon matPrefix>home</mat-icon>
-          <input matInput formControlName="adresse" placeholder="Ouakam">
+          <input matInput formControlName="adresse">
           @if (hasError('adresse')) {
             <mat-error>
-              L'adresse est requise (min 5 caractères)
+              L'adresse de prise en charge est requise (min 5 caractères)
             </mat-error>
           }
         </mat-form-field>
@@ -52,10 +52,10 @@
         <mat-form-field appearance="fill" class="full">
           <mat-label>Destination</mat-label>
           <mat-icon matPrefix>place</mat-icon>
-          <input  matInput formControlName="destination" placeholder="Hôpital Principal">
+          <input  matInput formControlName="destination">
           @if (hasError('destination')) {
             <mat-error>
-              La destination est requise
+              L'adresse de destination est requise
             </mat-error>
           }
         </mat-form-field>

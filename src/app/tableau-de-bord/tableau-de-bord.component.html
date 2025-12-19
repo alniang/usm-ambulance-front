@@ -45,24 +45,44 @@
       </mat-sidenav>
       <mat-sidenav-content>
         @if(selectedMessage) {
-          <div class="message-detail animate-slide-fade">
-    
-            <h2>Détails du message</h2>
-    
-            <mat-card>
-              <mat-card-content>
-                <p><strong>Nom :</strong> {{ selectedMessage.nom }}</p>
-                <p><strong>Téléphone :</strong> {{ selectedMessage.telephone }}</p>
-                <p><strong>Adresse :</strong> {{ selectedMessage.adresse }}</p>
-                <p><strong>Destination :</strong> {{ selectedMessage.destination }}</p>
-                <p><strong>Date :</strong> {{ selectedMessage.date | date:'EEEE dd MMMM yyyy':'':'fr-FR' }} à {{ selectedMessage.heure }}</p>
-                <p><strong>Notes suplémentaires :</strong> {{ selectedMessage.infos }}</p>
-              </mat-card-content>
-              <button mat-icon-button (click)="deleteMessage(selectedMessage)">
+
+          <div class="outlook-detail animate-slide">
+  
+            <div class="outlook-header">
+      
+              <span class="header-title">Message</span>
+      
+              <button 
+                matTooltip="Supprimer le message"
+                matTooltipPosition="below" 
+                mat-icon-button color="warn"
+               (click)="deleteMessage(selectedMessage)"
+              >
                 <mat-icon>delete</mat-icon>
               </button>
-            </mat-card>
-          </div>
+            </div>
+    
+            <div class="outlook-content desktop">
+              <div class="row">
+                <p><strong>Nom</strong><br>{{ selectedMessage.nom }}</p>
+                <p><strong>Téléphone</strong><br>{{ selectedMessage.telephone }}</p>
+              </div>
+              <div class="row">
+                <p><strong>Adresse</strong><br>{{ selectedMessage.adresse }}</p>
+                <p><strong>Destination</strong><br>{{ selectedMessage.destination }}</p>
+              </div>
+              <div class="date-row">
+                <p>
+                  <strong>Date</strong><br>
+                  {{ selectedMessage.date | date:'EEEE dd MMMM yyyy':'':'fr-FR' }}
+                  à {{ selectedMessage.heure }}
+                </p>
+              </div>
+              <p><strong>Notes</strong><br>{{ selectedMessage.infos }}</p>
+            </div>
+  
+          </div> 
+        
         }
       </mat-sidenav-content>
     </mat-sidenav-container>
@@ -116,8 +136,12 @@
   
           <span class="header-title">Message</span>
   
-          <button mat-icon-button color="warn"
-                  (click)="deleteMessage(selectedMessage)">
+          <button 
+            matTooltip="Supprimer le message"
+            matTooltipPosition="below" 
+            mat-icon-button color="warn"
+           (click)="deleteMessage(selectedMessage)"
+          >
             <mat-icon>delete</mat-icon>
           </button>
         </div>
